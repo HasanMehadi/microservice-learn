@@ -1,0 +1,56 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  config:
+    import: optional:configserver:${CONFIG_SERVER_URL:http://configserver:1010}
+  application:
+    name: gatewayserver
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:test}
+  cloud:
+    gateway:
+      routes:
+        - id: account-service
+          uri: lb://account
+          predicates:
+            - Path=/api/account/**
+          filters:
+            - RewritePath=/api/(?<remaining>.*), /${remaining}
+
+        - id: loan-service
+          uri: lb://loan
+          predicates:
+            - Path=/api/loan/**
+          filters:
+            - RewritePath=/api/(?<remaining>.*), /${remaining}
+
+        - id: card-service
+          uri: lb://card
+          predicates:
+            - Path=/api/card/**
+          filters:
+            - RewritePath=/api/(?<remaining>.*), /${remaining}
+
+      discovery:
+        locator:
+          enabled: false  # Disable default routing; we're using custom paths
+          lower-case-service-id: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      enabled: true
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
+    org.springframework.web.server.adapter.HttpWebHandlerAdapter: DEBUG
+
+

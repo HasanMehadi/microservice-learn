@@ -1,0 +1,74 @@
+# Java and Maven/Gradle
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+logs/
+**/logs/
+*.pid
+
+# Build output
+/target/
+/out/
+/build/
+
+# Maven
+.mvn/
+!**/src/main/**/.mvn/wrapper/maven-wrapper.jar
+**/pom.xml.tag
+**/pom.xml.releaseBackup
+**/pom.xml.versionsBackup
+**/pom.xml.next
+**/release.properties
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+gradle-app.setting
+gradle.properties
+**/*.kts
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+# IntelliJ module files
+**/*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+*.env
+
+# Spring Boot devtools
+.spring-boot-devtools.properties
+
+# Others
+bin/
+*.swp
+*.bak
+*.tmp
+*.orig
+*.rej
+
+# Database
+*.h2.db
+*.mv.db
+*.sql
+*.sqlite
+*.db
+
+# Local configuration
+application-dev.yml
+application-dev.properties
+application-local.yml
+application-local.properties

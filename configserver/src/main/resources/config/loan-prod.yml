@@ -1,0 +1,21 @@
+build:
+  version: "3.0"
+
+loans:
+  message: "WELCOME TO TEST MICROSERVICE FROM LOAN PROD"
+  contactDetails:
+    name: "MEHADI HASAN - Developer"
+    email: "hasan.mehadi.robin@gmail.com"
+  onCallSupport:
+    - "01937515455"
+    - "01886515450"
+
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eurekaserver:8076/eureka/
